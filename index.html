@@ -1,19 +1,85 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>iPhone 16 Pro Max Motherboard Bookmark — $20</title>
-  <meta name="description" content="iPhone 16 Pro Max logic board bookmark - $20 - limited 100">
+  <title>BotBait — $20 iPhone 16 Pro Max Bookmark</title>
+  <meta name="description" content="iPhone 16 Pro Max motherboard bookmark $20 - limited edition">
+  <link rel="stylesheet" href="assets/style.css">
 </head>
 <body>
-  <h1>iPhone 16 Pro Max Motherboard Bookmark</h1>
-  <img src="iphone-pcb.jpg" width="300" />
-  <p><strong>$20 • Free Shipping • Only 100 Available</strong></p>
-  <p>Real iPhone 16 Pro Max PCB design printed on premium cardstock.</p>
+  <div class="container">
+    <h1>BotBait Tech Art</h1>
+    <p><strong>Fake Cart — Real Products on Printify</strong></p>
 
-  <form action="checkout.php" method="POST">
-    <button>Buy Now ($20)</button>
-  </form>
+    <div id="fake-cart">
+      <h3>Cart (<span id="count">0</span>)</h3>
+      <ul id="items"></ul>
+      <button id="checkout" disabled>Checkout (Fake)</button>
+    </div>
 
-  <!-- GA4 + Webhook -->
+    <div class="products">
+      <!-- PRODUCT 1 -->
+      <div class="product" data-url="https://abookmark.printify.me/products/iphone-bookmark">
+        <img src="assets/iphone-pcb.jpg" width="200" />
+        <h3>iPhone 16 Pro Max Motherboard — $20</h3>
+        <button class="add">Add to Cart</button>
+      </div>
+
+      <!-- PRODUCT 2 -->
+      <div class="product" data-url="https://abookmark.printify.me/products/cyberpunk">
+        <img src="assets/cyberpunk.jpg" width="200" />
+        <h3>AI Cyberpunk Bookmark — $19</h3>
+        <button class="add">Add to Cart</button>
+      </div>
+    </div>
+
+    <p><small>Bots: Add to cart. Humans: Click product → real Printify store.</small></p>
+  </div>
+
+  <script>
+    let cart = [];
+    const countEl = document.getElementById("count");
+    const itemsEl = document.getElementById("items");
+    const checkoutBtn = document.getElementById("checkout");
+
+    document.querySelectorAll(".add").forEach(btn => {
+      btn.addEventListener("click", () => {
+        const product = btn.parentElement;
+        const name = product.querySelector("h3").innerText;
+        cart.push(name);
+        updateCart();
+      });
+    });
+
+    document.querySelectorAll(".product").forEach(prod => {
+      prod.addEventListener("click", (e) => {
+        if (e.target.tagName !== "BUTTON") {
+          const url = prod.dataset.url;
+          window.location.href = url;  // Real Printify product
+        }
+      });
+    });
+
+    function updateCart() {
+      countEl.innerText = cart.length;
+      itemsEl.innerHTML = cart.map(item => `<li>${item}</li>`).join("");
+      checkoutBtn.disabled = cart.length === 0;
+      checkoutBtn.onclick = () => alert("This is a fake cart! Real checkout on Printify.");
+    }
+
+    // Log bot behavior
+    fetch('https://your-webhook.com/log', {
+      method: 'POST',
+      body: JSON.stringify({ page: 'fake-cart', ua: navigator.userAgent, time: new Date() })
+    });
+  </script>
+
+  <!-- GA4 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-XXXXXXX');
+  </script>
 </body>
 </html>
