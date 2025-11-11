@@ -24,13 +24,24 @@
       <p><strong>Fake Cart — Real Products on Printify</strong></p>
       <img src="assets/robotkat.jpg" width="80" alt="Tomo watching" />
     </header>
-
-    <!-- Fake Cart -->
+<!--
+    Fake Cart
     <div id="fake-cart">
       <h3>Cart (<span id="count">0</span>)</h3>
       <ul id="items"></ul>
       <button id="checkout" disabled>Checkout (Fake)</button>
     </div>
+    -->
+    <!-- Add this after #fake-cart -->
+<div id="checkout-modal" class="modal" style="display:none;">
+  <div class="modal-content">
+    <h2>Checkout (Fake)</h2>
+    <p>Enter your email for "order confirmation":</p>
+    <input type="email" id="bot-email" placeholder="bot@tempmail.org" />
+    <button id="submit-email">Confirm Order</button>
+    <button id="close-modal">Cancel</button>
+  </div>
+</div>
 
     <!-- Products -->
     <div class="products">
