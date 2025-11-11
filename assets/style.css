@@ -6,6 +6,22 @@ body {
   text-align: center;
   line-height: 1.6;
 }
+.modal {
+  position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+  background: rgba(0,0,0,0.8); display: flex; align-items: center; justify-content: center;
+  z-index: 1000;
+}
+.modal-content {
+  background: #111; border: 2px solid #0f0; padding: 30px; width: 90%; max-width: 400px;
+  text-align: center; box-shadow: 0 0 20px #0f0;
+}
+#bot-email {
+  width: 100%; padding: 12px; margin: 15px 0; background: #000; color: #0f0; border: 1px solid #0f0;
+}
+.modal button {
+  margin: 10px; padding: 12px 24px;
+}
+#close-modal { background: #333; }
 .container { max-width: 900px; margin: 40px auto; padding: 20px; }
 header img { margin: 10px; border: 2px solid #0f0; border-radius: 50%; }
 h1 { font-size: 2.5rem; margin: 20px 0; text-shadow: 0 0 10px #0f0; }
@@ -53,3 +69,5 @@ button:disabled { background: #333; cursor: not-allowed; }
 
 footer { margin-top: 50px; font-size: 0.9rem; }
 footer a { color: #0ff; text-decoration: underline; }
+
+
